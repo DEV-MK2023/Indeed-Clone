@@ -142,7 +142,7 @@ export default function JobList({ jobs = [], onApply, onSaveJob, loggedInUser })
           <div className="hidden md:block w-1/2">
             <JobDetails1
               job={selectedJob}
-              onClose={close}
+              onClose={handleCloseDetails}
               loggedInUser={loggedInUser} // <-- pass it here
             />
           </div>
