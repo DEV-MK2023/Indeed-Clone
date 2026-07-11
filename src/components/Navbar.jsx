@@ -9,8 +9,8 @@ const Navbar = ({ loggedInUser, onLogout }) => {
   // Only show Saved Jobs and My Applications if user is logged in
   const navLinks = [
     { name: "Home", href: "/" },
-    { name: "Remote Jobs", href: "/remote-jobs" },
-    { name: "Company Reviews", href: "/company-review" },
+    { name: "RemoteJobsPage", href: "/remote-jobs" },
+    { name: "companyReviews", href: "/company-review" },
     ...(loggedInUser
       ? [
           { name: "Saved Jobs", href: "/saved-jobs" },
