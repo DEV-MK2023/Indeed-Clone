@@ -1,0 +1,603 @@
+{
+  "jobs": [
+    {
+      "id": 1,
+      "title": "Senior Software Engineer - React",
+      "company": "Microsoft",
+      "city": "Lahore",
+      "location": "Pakistan",
+      "salary": "PKR 1,400,000 - 2,100,000/month",
+      "type": "full-time",
+      "description": "Work with a talented team on innovative software solutions, focusing on front-end architecture and high-performance UI components.",
+      "requirements": [
+        "React & Tailwind CSS",
+        "3+ years experience in a senior role",
+        "Strong problem-solving and architectural skills",
+        "Experience with state management libraries like Redux or Zustand"
+      ],
+      "postedDaysAgo": 2
+    },
+    {
+      "id": 2,
+      "title": "Frontend Developer (React Native)",
+      "company": "Creative Chaos",
+      "city": "Remote",
+      "location": "Pakistan",
+      "salary": "PKR 300,000 - 450,000/month",
+      "type": "full-time",
+      "description": "Develop and maintain cross-platform mobile applications using React Native. Collaborate with design and backend teams to deliver new features.",
+      "requirements": [
+        "3+ years of React Native experience",
+        "Proficiency with JavaScript and TypeScript",
+        "Experience with mobile state management",
+        "Published applications on App Store or Google Play"
+      ],
+      "postedDaysAgo": 3
+    },
+    {
+      "id": 3,
+      "title": "Software Engineer IV - Backend",
+      "company": "TCP Software",
+      "city": "Lahore",
+      "location": "On-site",
+      "salary": "PKR 450,000 - 650,000/month",
+      "type": "full-time",
+      "description": "Design, develop, and maintain high-performance backend services. Work on scalable systems within the Engineering, Product, and IT departments.",
+      "requirements": [
+        "5+ years of experience in backend development",
+        "Strong knowledge of Node.js, PHP, or Java",
+        "Expertise in RESTful API design and microservices",
+        "Proficiency with databases (SQL/NoSQL)"
+      ],
+      "postedDaysAgo": 11
+    },
+    {
+      "id": 4,
+      "title": "DevOps Engineer - AWS",
+      "company": "tkxel",
+      "city": "Lahore",
+      "location": "Pakistan",
+      "salary": "PKR 400,000 - 550,000/month",
+      "type": "full-time",
+      "description": "Design and manage reliable, scalable cloud infrastructure on AWS. Lead automation efforts and optimize deployment pipelines.",
+      "requirements": [
+        "3+ years of DevOps experience with AWS",
+        "Expertise in Kubernetes and Terraform",
+        "Proficiency in Python/Bash scripting",
+        "Experience with CI/CD tools like Jenkins or GitHub Actions"
+      ],
+      "postedDaysAgo": 1
+    },
+    {
+      "id": 5,
+      "title": "Senior Data Engineer",
+      "company": "Dinovaux Pvt Ltd",
+      "city": "Lahore",
+      "location": "Pakistan",
+      "salary": "PKR 125,000 - 150,000/month",
+      "type": "full-time",
+      "description": "Build and maintain data pipelines for analytics and reporting. Work on large datasets to support business intelligence initiatives.",
+      "requirements": [
+        "2+ years of data engineering experience",
+        "Proficiency in SQL and Python",
+        "Experience with data warehousing solutions",
+        "Knowledge of ETL processes"
+      ],
+      "postedDaysAgo": 1
+    },
+    {
+      "id": 6,
+      "title": "Senior SQA Engineer",
+      "company": "Confiz",
+      "city": "Lahore",
+      "location": "Pakistan",
+      "salary": "PKR 300,000 - 350,000/month",
+      "type": "full-time",
+      "description": "Develop and maintain automated test frameworks for enterprise software solutions. Lead quality assurance efforts and mentor junior team members.",
+      "requirements": [
+        "3+ years of QA experience",
+        "Expertise in Selenium/Cypress",
+        "Proficiency in Java or Python scripting",
+        "Experience with JIRA/TestRail"
+      ],
+      "postedDaysAgo": 2
+    },
+    {
+      "id": 7,
+      "title": "UX Designer",
+      "company": "Tintash",
+      "city": "Lahore",
+      "location": "Remote",
+      "salary": "PKR 150,000 - 200,000/month",
+      "type": "part-time",
+      "description": "Create intuitive user experiences for mobile gaming applications. Work with a passionate team of designers and developers.",
+      "requirements": [
+        "Portfolio required",
+        "Expertise in Figma/Sketch",
+        "2+ years of mobile design experience",
+        "Understanding of Material Design and iOS Human Interface Guidelines"
+      ],
+      "postedDaysAgo": 3
+    },
+    {
+      "id": 8,
+      "title": "Backend Developer (Node.js)",
+      "company": "Amazon",
+      "city": "Karachi",
+      "location": "Pakistan",
+      "salary": "PKR 120,000 - 200,000/month",
+      "type": "full-time",
+      "description": "Develop and maintain server-side logic for e-commerce platforms. Focus on performance, scalability, and security.",
+      "requirements": [
+        "Node.js proficiency",
+        "Experience with Express.js or similar frameworks",
+        "Knowledge of database systems (e.g., MongoDB, PostgreSQL)",
+        "Familiarity with cloud services like AWS or Azure"
+      ],
+      "postedDaysAgo": 1
+    },
+    {
+      "id": 9,
+      "title": "Data Scientist",
+      "company": "Airlift",
+      "city": "Karachi",
+      "location": "Pakistan",
+      "salary": "PKR 500,000+/month",
+      "type": "full-time",
+      "description": "Develop ML models for demand forecasting and route optimization. Work on our logistics platform to improve efficiency and customer experience.",
+      "requirements": [
+        "PhD/MS in Data Science or a related field",
+        "Mastery of PyTorch or TensorFlow",
+        "Proficiency with Pandas/NumPy",
+        "Experience with big data technologies"
+      ],
+      "postedDaysAgo": 5
+    },
+    {
+      "id": 10,
+      "title": "Technical Writer",
+      "company": "10Pearls",
+      "city": "Islamabad",
+      "location": "Hybrid",
+      "salary": "PKR 150,000 - 200,000/month",
+      "type": "full-time",
+      "description": "Create clear and concise developer documentation for API products and SDKs. Collaborate with engineers to ensure accuracy.",
+      "requirements": [
+        "Computer Science background",
+        "Proficiency in Markdown/Asciidoc",
+        "Experience with Git version control",
+        "Excellent writing and communication skills"
+      ],
+      "postedDaysAgo": 2
+    },
+    {
+      "id": 11,
+      "title": "Full Stack Software Developer",
+      "company": "Kidan",
+      "city": "Faisalabad",
+      "location": "Pakistan",
+      "salary": "PKR 150,000 - 250,000/month",
+      "type": "full-time",
+      "description": "Develop and maintain both front-end and back-end components of web applications. Work on various projects with a focus on delivering robust solutions.",
+      "requirements": [
+        "3+ years of full-stack experience",
+        "Strong knowledge of MERN stack or similar technologies",
+        "Experience with database design and API development",
+        "Good understanding of version control (Git)"
+      ],
+      "postedDaysAgo": 1
+    },
+    {
+      "id": 12,
+      "title": "Frontend Developer (MERN Stack)",
+      "company": "tkxel",
+      "city": "Lahore",
+      "location": "On-site",
+      "salary": "PKR 250,000 - 350,000/month",
+      "type": "full-time",
+      "description": "Seeking a talented MERN stack developer to build responsive web interfaces. You will be responsible for creating high-performance, bug-free code.",
+      "requirements": [
+        "2+ years of MERN stack experience",
+        "Proficiency in React.js, Node.js, and Express.js",
+        "Experience with MongoDB",
+        "Ability to work in an Agile environment"
+      ],
+      "postedDaysAgo": 1
+    },
+    {
+      "id": 13,
+      "title": "WordPress Website Developer - Bricks Expert",
+      "company": "Bestaxca",
+      "city": "Lahore",
+      "location": "Pakistan",
+      "salary": "PKR 80,000 - 150,000/month",
+      "type": "full-time",
+      "description": "Create high-quality, responsive websites using WordPress and Bricks Builder. Optimize sites for performance and security.",
+      "requirements": [
+        "Expertise in WordPress and Bricks Builder",
+        "Strong knowledge of HTML, CSS, and JavaScript",
+        "Experience with site optimization and security best practices",
+        "Portfolio of previous work"
+      ],
+      "postedDaysAgo": 1
+    },
+    {
+      "id": 14,
+      "title": "Senior .NET Engineer",
+      "company": "Enterprise64",
+      "city": "Karachi",
+      "location": "Remote",
+      "salary": "PKR 450,000 - 600,000/month",
+      "type": "full-time",
+      "description": "Lead technical initiatives and mentor teams in a fast-growing U.S.-based tech company. Work with modern .NET frameworks and cloud technologies.",
+      "requirements": [
+        "5+ years of .NET experience",
+        "Expertise in Azure and CI/CD pipelines",
+        "Proficiency with front-end frameworks (Angular or React)",
+        "Excellent problem-solving and communication skills"
+      ],
+      "postedDaysAgo": 1
+    },
+    {
+      "id": 15,
+      "title": "Cloud Core Network Service Engineer",
+      "company": "JAZZ",
+      "city": "Islamabad",
+      "location": "On-site",
+      "salary": "PKR 350,000 - 500,000/month",
+      "type": "full-time",
+      "description": "Deliver and support NFV-based core network projects. Handle equipment deployment, network upgrades, and integration of 4G/5G elements.",
+      "requirements": [
+        "3+ years of experience in telecom core networks",
+        "Knowledge of NFV architecture and technologies",
+        "Experience with 4G/5G elements (EPC, IMS)",
+        "Strong technical communication skills"
+      ],
+      "postedDaysAgo": 4
+    },
+    {
+      "id": 16,
+      "title": "Mobile Technician / Service Engineer",
+      "company": "Antpower Tech Private Ltd",
+      "city": "Multiple Cities",
+      "location": "Pakistan",
+      "salary": "PKR 80,000 - 90,000/month",
+      "type": "full-time",
+      "description": "Provide technical support and service for mobile devices. Diagnose and repair hardware and software issues.",
+      "requirements": [
+        "2+ years of experience as a mobile technician",
+        "Knowledge of smartphone hardware and software",
+        "Excellent troubleshooting skills",
+        "Customer service-oriented"
+      ],
+      "postedDaysAgo": 0
+    },
+    {
+      "id": 17,
+      "title": "Digital Marketing Expert",
+      "company": "Tech Vezoto",
+      "city": "Lahore",
+      "location": "Pakistan",
+      "salary": "PKR 70,000 - 80,000/month",
+      "type": "full-time",
+      "description": "Manage and execute digital marketing campaigns, including SEO, SEM, social media, and email marketing. Analyze campaign performance.",
+      "requirements": [
+        "2+ years of digital marketing experience",
+        "Proficiency with Google Analytics and SEO tools",
+        "Strong understanding of social media platforms",
+        "Ability to create compelling marketing content"
+      ],
+      "postedDaysAgo": 0
+    },
+    {
+      "id": 18,
+      "title": "Content Writer",
+      "company": "Stardom Now",
+      "city": "Lahore",
+      "location": "Pakistan",
+      "salary": "PKR 70,000 - 80,000/month",
+      "type": "full-time",
+      "description": "Create engaging and informative content for websites, blogs, and marketing materials. Research industry-related topics and trends.",
+      "requirements": [
+        "2+ years of content writing experience",
+        "Strong command of the English language",
+        "Excellent research and editing skills",
+        "Portfolio of published work"
+      ],
+      "postedDaysAgo": 0
+    },
+    {
+      "id": 19,
+      "title": "Senior Frontend Engineer",
+      "company": "Motive",
+      "city": "Remote",
+      "location": "Pakistan",
+      "salary": "PKR 600,000 - 900,000/month",
+      "type": "full-time",
+      "description": "Lead the development of complex front-end applications. Collaborate with global teams and contribute to architectural decisions.",
+      "requirements": [
+        "5+ years of experience in frontend development",
+        "Expertise in React or other modern frameworks",
+        "Strong knowledge of HTML5, CSS3, and JavaScript",
+        "Experience with performance optimization and testing"
+      ],
+      "postedDaysAgo": 0
+    },
+    {
+      "id": 20,
+      "title": "Principal Software Engineer - C++",
+      "company": "Creative Chaos",
+      "city": "Remote",
+      "location": "Pakistan",
+      "salary": "PKR 800,000 - 1,200,000/month",
+      "type": "full-time",
+      "description": "Lead the design and development of high-performance C++ applications. Solve complex technical challenges and mentor junior engineers.",
+      "requirements": [
+        "8+ years of C++ experience",
+        "Expertise in data structures and algorithms",
+        "Experience with low-level systems programming",
+        "Strong leadership and communication skills"
+      ],
+      "postedDaysAgo": 1
+    },
+    {
+      "id": 21,
+      "title": "QA Engineer (Night-Shift)",
+      "company": "Motive",
+      "city": "Remote",
+      "location": "Islamabad",
+      "salary": "PKR 250,000 - 350,000/month",
+      "type": "full-time",
+      "description": "Perform manual and automated testing of software products. Work with a remote team during night-shift hours.",
+      "requirements": [
+        "2+ years of QA experience",
+        "Experience with test case design and execution",
+        "Familiarity with automation tools (e.g., Selenium)",
+        "Ability to work during night-shift hours"
+      ],
+      "postedDaysAgo": 0
+    },
+    {
+      "id": 22,
+      "title": "Senior Project Manager",
+      "company": "tkxel",
+      "city": "Lahore",
+      "location": "Pakistan",
+      "salary": "PKR 400,000 - 600,000/month",
+      "type": "full-time",
+      "description": "Oversee project delivery, manage resources, and ensure operational efficiency. Lead cross-functional teams and drive project success.",
+      "requirements": [
+        "5+ years of project management experience",
+        "Expertise in Agile and Waterfall methodologies",
+        "Strong leadership and stakeholder management skills",
+        "PMP or equivalent certification preferred"
+      ],
+      "postedDaysAgo": 1
+    },
+    {
+      "id": 23,
+      "title": "Senior Software Engineer - Java",
+      "company": "SWATX",
+      "city": "Islamabad",
+      "location": "On-site",
+      "salary": "PKR 450,000 - 600,000/month",
+      "type": "full-time",
+      "description": "Design and maintain high-quality Java applications. Implement best practices and optimize performance.",
+      "requirements": [
+        "5+ years of Java development experience",
+        "Proficiency with Spring framework",
+        "Experience with microservices architecture",
+        "Knowledge of database systems and SQL"
+      ],
+      "postedDaysAgo": 0
+    },
+    {
+      "id": 24,
+      "title": "Technical Recruiter",
+      "company": "Translation Empire",
+      "city": "Rawalpindi",
+      "location": "On-site",
+      "salary": "PKR 70,000 - 120,000/month",
+      "type": "full-time",
+      "description": "Source, screen, and recruit technical talent. Collaborate with hiring managers to understand technical requirements.",
+      "requirements": [
+        "2+ years of technical recruiting experience",
+        "Strong knowledge of the tech industry and job roles",
+        "Excellent communication and negotiation skills",
+        "Familiarity with applicant tracking systems"
+      ],
+      "postedDaysAgo": 5
+    }
+  ],
+  "companies": [
+    {
+      "name": "Microsoft",
+      "reviews": 12453,
+      "rating": 4.7,
+      "icon": "MS",
+      "iconBg": "bg-blue-100",
+      "iconColor": "text-blue-600",
+      "website": "https://microsoft.com"
+    },
+    {
+      "name": "Google",
+      "reviews": 18932,
+      "rating": 4.8,
+      "icon": "GO",
+      "iconBg": "bg-red-100",
+      "iconColor": "text-red-600",
+      "website": "https://google.com"
+    },
+    {
+      "name": "Amazon",
+      "reviews": 15678,
+      "rating": 4.3,
+      "icon": "AM",
+      "iconBg": "bg-orange-100",
+      "iconColor": "text-orange-600",
+      "website": "https://amazon.com"
+    },
+    {
+      "name": "Creative Chaos",
+      "reviews": 450,
+      "rating": 4.5,
+      "icon": "CC",
+      "iconBg": "bg-purple-100",
+      "iconColor": "text-purple-600",
+      "website": "https://creativechaos.com"
+    },
+    {
+      "name": "TCP Software",
+      "reviews": 210,
+      "rating": 4.1,
+      "icon": "TC",
+      "iconBg": "bg-teal-100",
+      "iconColor": "text-teal-600",
+      "website": "https://tcpsoftware.com"
+    },
+    {
+      "name": "tkxel",
+      "reviews": 320,
+      "rating": 4.3,
+      "icon": "TX",
+      "iconBg": "bg-blue-200",
+      "iconColor": "text-blue-700",
+      "website": "https://tkxel.com"
+    },
+    {
+      "name": "Dinovaux Pvt Ltd",
+      "reviews": 50,
+      "rating": 4.0,
+      "icon": "DV",
+      "iconBg": "bg-yellow-100",
+      "iconColor": "text-yellow-600",
+      "website": "https://dinovaux.com"
+    },
+    {
+      "name": "Confiz",
+      "reviews": 280,
+      "rating": 4.2,
+      "icon": "CZ",
+      "iconBg": "bg-green-100",
+      "iconColor": "text-green-600",
+      "website": "https://confiz.com"
+    },
+    {
+      "name": "Tintash",
+      "reviews": 150,
+      "rating": 4.0,
+      "icon": "TS",
+      "iconBg": "bg-indigo-100",
+      "iconColor": "text-indigo-600",
+      "website": "https://tintash.com"
+    },
+    {
+      "name": "Airlift",
+      "reviews": 300,
+      "rating": 4.4,
+      "icon": "AL",
+      "iconBg": "bg-orange-100",
+      "iconColor": "text-orange-600",
+      "website": "https://airlift.com"
+    },
+    {
+      "name": "10Pearls",
+      "reviews": 287,
+      "rating": 4.0,
+      "icon": "10P",
+      "iconBg": "bg-green-100",
+      "iconColor": "text-green-700",
+      "website": "https://10pearls.com"
+    },
+    {
+      "name": "Kidan",
+      "reviews": 45,
+      "rating": 3.8,
+      "icon": "KD",
+      "iconBg": "bg-gray-200",
+      "iconColor": "text-gray-800",
+      "website": "https://kidan.com"
+    },
+    {
+      "name": "Bestaxca",
+      "reviews": 20,
+      "rating": 4.1,
+      "icon": "BX",
+      "iconBg": "bg-purple-100",
+      "iconColor": "text-purple-500",
+      "website": "https://bestaxca.com"
+    },
+    {
+      "name": "Enterprise64",
+      "reviews": 90,
+      "rating": 4.6,
+      "icon": "E64",
+      "iconBg": "bg-red-100",
+      "iconColor": "text-red-700",
+      "website": "https://enterprise64.com"
+    },
+    {
+      "name": "JAZZ",
+      "reviews": 750,
+      "rating": 4.4,
+      "icon": "JZ",
+      "iconBg": "bg-yellow-200",
+      "iconColor": "text-yellow-700",
+      "website": "https://jazz.com.pk"
+    },
+    {
+      "name": "Antpower Tech Private Ltd",
+      "reviews": 15,
+      "rating": 3.5,
+      "icon": "AP",
+      "iconBg": "bg-gray-300",
+      "iconColor": "text-gray-900",
+      "website": "https://antpowertech.com"
+    },
+    {
+      "name": "Tech Vezoto",
+      "reviews": 30,
+      "rating": 3.9,
+      "icon": "TV",
+      "iconBg": "bg-blue-200",
+      "iconColor": "text-blue-800",
+      "website": "https://techvezoto.com"
+    },
+    {
+      "name": "Stardom Now",
+      "reviews": 10,
+      "rating": 4.0,
+      "icon": "SN",
+      "iconBg": "bg-green-200",
+      "iconColor": "text-green-800",
+      "website": "https://stardomnow.com"
+    },
+    {
+      "name": "Motive",
+      "reviews": 110,
+      "rating": 4.5,
+      "icon": "MV",
+      "iconBg": "bg-orange-100",
+      "iconColor": "text-orange-700",
+      "website": "https://gomotive.com"
+    },
+    {
+      "name": "SWATX",
+      "reviews": 65,
+      "rating": 4.2,
+      "icon": "SX",
+      "iconBg": "bg-red-200",
+      "iconColor": "text-red-800",
+      "website": "https://swatx.co"
+    },
+    {
+      "name": "Translation Empire",
+      "reviews": 40,
+      "rating": 3.8,
+      "icon": "TE",
+      "iconBg": "bg-gray-100",
+      "iconColor": "text-gray-600",
+      "website": "https://translationempire.com"
+    }
+  ]
+}
