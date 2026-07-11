@@ -1,16 +1,16 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const Navbar = ({ loggedInUser, onLogout }) => {
   const [menuOpen, setMenuOpen] = useState(false);
 
-  // Nav links: always show Home, Remote Jobs, Company Reviews, Employers
-  // Only show Saved Jobs and My Applications if user is logged in
+  // Navigation Links
   const navLinks = [
     { name: "Home", href: "/" },
-    { name: "RemoteJobsPage", href: "/remote-jobs" },
-    { name: "companyReviews", href: "/company-review" },
+    { name: "Remote Jobs", href: "/remote-jobs" },
+    { name: "Company Reviews", href: "/company-review" },
     ...(loggedInUser
       ? [
           { name: "Saved Jobs", href: "/saved-jobs" },
@@ -21,68 +21,101 @@ const Navbar = ({ loggedInUser, onLogout }) => {
   ];
 
   return (
-    <nav className="sticky w-full z-50 bg-white/90 backdrop-blur-md shadow-lg">
+    <nav className="sticky top-0 w-full z-50 bg-white/90 backdrop-blur-md shadow-lg">
       <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
         {/* Logo */}
-        <motion.h1
+        <motion.div
           initial={{ scale: 0.8, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.5 }}
-          className="text-2xl font-bold text-blue-700 flex items-center gap-2"
         >
-          <img src="/logo2.png" className="w-36 md:w-32" alt="Logo" />
-        </motion.h1>
+          <Link to="/">
+            <img
+              src="/logo2.png"
+              className="w-36 md:w-32"
+              alt="Logo"
+            />
+          </Link>
+        </motion.div>
 
-        {/* Desktop Links */}
+        {/* Desktop Navigation */}
         <div className="hidden md:flex gap-6 items-center">
-          {navLinks.map((link) => (
-            <motion.a
-              key={link.name}
-              href={link.href}
-              className="text-gray-700 hover:text-blue-600 font-medium relative transition-colors"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              {link.name}
-              <motion.span
-                className="absolute left-0 bottom-0 w-0 h-[2px] bg-blue-600"
-                whileHover={{ width: "100%" }}
-                transition={{ duration: 0.3 }}
-              />
-            </motion.a>
-          ))}
+          {navLinks.map((link) =>
+            link.href === "#" ? (
+              <span
+                key={link.name}
+                className="text-gray-400 cursor-not-allowed font-medium"
+              >
+                {link.name}
+              </span>
+            ) : (
+              <motion.div
+                key={link.name}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Link
+                  to={link.href}
+                  className="relative text-gray-700 hover:text-blue-600 font-medium transition-colors group"
+                >
+                  {link.name}
 
-          {/* Auth Links */}
+                  <span
+                    className="
+                      absolute
+                      left-0
+                      -bottom-1
+                      h-[2px]
+                      w-0
+                      bg-blue-600
+                      transition-all
+                      duration-300
+                      group-hover:w-full
+                    "
+                  />
+                </Link>
+              </motion.div>
+            )
+          )}
+
+          {/* Auth Buttons */}
           {!loggedInUser ? (
             <>
-              <motion.a
-                href="/register"
-                className="text-gray-700 hover:text-blue-600 font-medium transition-colors"
+              <motion.div
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                Register
-              </motion.a>
-              <motion.a
-                href="/login"
-                className="text-gray-700 hover:text-blue-600 font-medium transition-colors"
+                <Link
+                  to="/register"
+                  className="text-gray-700 hover:text-blue-600 font-medium transition-colors"
+                >
+                  Register
+                </Link>
+              </motion.div>
+
+              <motion.div
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                Login
-              </motion.a>
+                <Link
+                  to="/login"
+                  className="text-gray-700 hover:text-blue-600 font-medium transition-colors"
+                >
+                  Login
+                </Link>
+              </motion.div>
             </>
           ) : (
             <button
               onClick={onLogout}
-              className="bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700 transition-colors"
+              className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
             >
               Logout ({loggedInUser.name || loggedInUser.email})
             </button>
           )}
         </div>
 
-        {/* Hamburger */}
+        {/* Mobile Hamburger */}
         <button
           onClick={() => setMenuOpen(!menuOpen)}
           className="md:hidden text-gray-700"
@@ -102,37 +135,52 @@ const Navbar = ({ loggedInUser, onLogout }) => {
             className="md:hidden bg-white shadow-lg rounded-b-xl overflow-hidden"
           >
             <div className="flex flex-col px-6 py-4 gap-4">
-              {navLinks.map((link) => (
-                <motion.a
-                  key={link.name}
-                  href={link.href}
-                  className="text-gray-700 font-medium hover:text-blue-600 transition-colors"
-                  whileHover={{ x: 5 }}
-                  onClick={() => setMenuOpen(false)}
-                >
-                  {link.name}
-                </motion.a>
-              ))}
+              {navLinks.map((link) =>
+                link.href === "#" ? (
+                  <span
+                    key={link.name}
+                    className="text-gray-400 cursor-not-allowed font-medium"
+                  >
+                    {link.name}
+                  </span>
+                ) : (
+                  <motion.div
+                    key={link.name}
+                    whileHover={{ x: 5 }}
+                  >
+                    <Link
+                      to={link.href}
+                      onClick={() => setMenuOpen(false)}
+                      className="text-gray-700 font-medium hover:text-blue-600 transition-colors"
+                    >
+                      {link.name}
+                    </Link>
+                  </motion.div>
+                )
+              )}
 
-              {/* Auth Links Mobile */}
+              {/* Mobile Auth */}
               {!loggedInUser ? (
                 <>
-                  <motion.a
-                    href="/register"
-                    className="text-gray-700 font-medium hover:text-blue-600 transition-colors"
-                    whileHover={{ x: 5 }}
-                    onClick={() => setMenuOpen(false)}
-                  >
-                    Register
-                  </motion.a>
-                  <motion.a
-                    href="/login"
-                    className="text-gray-700 font-medium hover:text-blue-600 transition-colors"
-                    whileHover={{ x: 5 }}
-                    onClick={() => setMenuOpen(false)}
-                  >
-                    Login
-                  </motion.a>
+                  <motion.div whileHover={{ x: 5 }}>
+                    <Link
+                      to="/register"
+                      onClick={() => setMenuOpen(false)}
+                      className="text-gray-700 font-medium hover:text-blue-600 transition-colors"
+                    >
+                      Register
+                    </Link>
+                  </motion.div>
+
+                  <motion.div whileHover={{ x: 5 }}>
+                    <Link
+                      to="/login"
+                      onClick={() => setMenuOpen(false)}
+                      className="text-gray-700 font-medium hover:text-blue-600 transition-colors"
+                    >
+                      Login
+                    </Link>
+                  </motion.div>
                 </>
               ) : (
                 <button
@@ -140,7 +188,7 @@ const Navbar = ({ loggedInUser, onLogout }) => {
                     onLogout();
                     setMenuOpen(false);
                   }}
-                  className="bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700 transition-colors"
+                  className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
                 >
                   Logout ({loggedInUser.name || loggedInUser.email})
                 </button>
