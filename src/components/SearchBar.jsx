@@ -1,5 +1,5 @@
 import React from "react";
-import { MapPin } from "lucide-react";
+import { Search, MapPin } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const SearchBar = ({ jobs, setFilteredJobs }) => {
@@ -8,21 +8,29 @@ const SearchBar = ({ jobs, setFilteredJobs }) => {
   const [showJobs, setShowJobs] = React.useState(false);
   const [showLocations, setShowLocations] = React.useState(false);
 
-  const suggestedJobs = [...new Set(
-    jobs
-      .map(job => job?.title)
-      .filter(title =>
-        title && title.toLowerCase().includes(jobQuery.toLowerCase())
-      )
-  )].slice(0, 3);
+  const suggestedJobs = [
+    ...new Set(
+      jobs
+        .map((job) => job?.title)
+        .filter(
+          (title) =>
+            title &&
+            title.toLowerCase().includes(jobQuery.toLowerCase())
+        )
+    ),
+  ].slice(0, 5);
 
-  const locations = [...new Set(
-    jobs
-      .map(job => job?.city)
-      .filter(city =>
-        city && city.toLowerCase().includes(locationQuery.toLowerCase())
-      )
-  )].slice(0, 3);
+  const locations = [
+    ...new Set(
+      jobs
+        .map((job) => job?.city)
+        .filter(
+          (city) =>
+            city &&
+            city.toLowerCase().includes(locationQuery.toLowerCase())
+        )
+    ),
+  ].slice(0, 5);
 
   const handleSearch = () => {
     if (!jobQuery && !locationQuery) {
@@ -30,11 +38,11 @@ const SearchBar = ({ jobs, setFilteredJobs }) => {
       return;
     }
 
-    const filtered = jobs.filter(job => {
+    const filtered = jobs.filter((job) => {
       const matchesJob = jobQuery
         ? job.title?.toLowerCase().includes(jobQuery.toLowerCase()) ||
-          job.description?.toLowerCase().includes(jobQuery.toLowerCase()) ||
-          job.company?.toLowerCase().includes(jobQuery.toLowerCase())
+          job.company?.toLowerCase().includes(jobQuery.toLowerCase()) ||
+          job.description?.toLowerCase().includes(jobQuery.toLowerCase())
         : true;
 
       const matchesLocation = locationQuery
@@ -49,102 +57,249 @@ const SearchBar = ({ jobs, setFilteredJobs }) => {
   };
 
   React.useEffect(() => {
-    const timer = setTimeout(() => handleSearch(), 300);
+    const timer = setTimeout(() => {
+      handleSearch();
+    }, 300);
+
     return () => clearTimeout(timer);
   }, [jobQuery, locationQuery]);
 
   return (
-    <div className="bg-white rounded-xl shadow-md p-4 mb-6 border border-blue-200">
-      <div className="flex flex-col md:flex-row md:items-end gap-4">
-        
-        {/* Job Input */}
+    <motion.div
+      initial={{ opacity: 0, y: -15 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4 }}
+      className="bg-white border border-gray-200 rounded-2xl shadow-lg p-6 mb-8"
+    >
+      <div className="mb-5">
+        <h2 className="text-2xl font-bold text-gray-900">
+          Find Your Dream Job
+        </h2>
+
+        <p className="text-gray-500 mt-1">
+          Search by job title, company or location.
+        </p>
+      </div>
+
+      <div className="flex flex-col lg:flex-row gap-4">
+
+        {/* Job Search */}
+
         <div className="flex-1 relative">
-          <input
-            className="w-full border border-blue-200 rounded-lg px-4 py-3 focus:outline-none transition duration-150 shadow-sm"
-            placeholder="Job title, keywords, or company"
-            value={jobQuery}
-            onFocus={() => setShowJobs(true)}
-            onBlur={() => setTimeout(() => setShowJobs(false), 200)}
-            onChange={(e) => setJobQuery(e.target.value)}
-            onKeyPress={(e) => e.key === 'Enter' && handleSearch()}
-          />
+
+          <div
+            className="
+            flex
+            items-center
+            h-14
+            px-4
+            rounded-xl
+            border
+            border-gray-300
+            bg-white
+            shadow-sm
+            focus-within:border-blue-500
+            focus-within:ring-2
+            focus-within:ring-blue-100
+            transition
+            "
+          >
+            <Search
+              size={19}
+              className="text-gray-400 mr-3"
+            />
+
+            <input
+              type="text"
+              placeholder="Search jobs or companies..."
+              className="w-full outline-none bg-transparent text-gray-700"
+              value={jobQuery}
+              onFocus={() => setShowJobs(true)}
+              onBlur={() =>
+                setTimeout(() => setShowJobs(false), 200)
+              }
+              onChange={(e) => setJobQuery(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") handleSearch();
+              }}
+            />
+          </div>
 
           <AnimatePresence>
+
             {showJobs && suggestedJobs.length > 0 && (
+
               <motion.ul
-                initial={{ opacity: 0, y: -5 }}
+                initial={{ opacity: 0, y: -8 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -5 }}
-                className="absolute top-full left-0 w-full bg-white border border-blue-200 rounded-lg mt-1 shadow z-10"
+                exit={{ opacity: 0, y: -8 }}
+                className="
+                absolute
+                top-full
+                left-0
+                w-full
+                mt-2
+                bg-white
+                rounded-xl
+                shadow-xl
+                border
+                border-gray-200
+                overflow-hidden
+                z-20
+                "
               >
-                {suggestedJobs.map((job, i) => (
+
+                {suggestedJobs.map((job, index) => (
+
                   <li
-                    key={i}
-                    className="px-4 py-2 hover:bg-blue-50 cursor-pointer transition-colors"
+                    key={index}
                     onMouseDown={(e) => {
                       e.preventDefault();
                       setJobQuery(job);
                       setShowJobs(false);
                     }}
+                    className="
+                    px-4
+                    py-3
+                    cursor-pointer
+                    hover:bg-blue-50
+                    transition
+                    "
                   >
                     {job}
                   </li>
+
                 ))}
+
               </motion.ul>
+
             )}
+
           </AnimatePresence>
+
         </div>
 
-        {/* Location Input */}
+        {/* Location */}
+
         <div className="flex-1 relative">
-          <div className="flex items-center border border-blue-200 rounded-lg px-4 py-3 bg-white transition duration-150 shadow-sm">
-            <MapPin className="text-blue-400 mr-2" size={18} />
+
+          <div
+            className="
+            flex
+            items-center
+            h-14
+            px-4
+            rounded-xl
+            border
+            border-gray-300
+            bg-white
+            shadow-sm
+            focus-within:border-blue-500
+            focus-within:ring-2
+            focus-within:ring-blue-100
+            transition
+            "
+          >
+            <MapPin
+              size={19}
+              className="text-gray-400 mr-3"
+            />
+
             <input
-              className="w-full outline-none bg-transparent"
+              type="text"
               placeholder="City or Location"
+              className="w-full outline-none bg-transparent text-gray-700"
               value={locationQuery}
               onFocus={() => setShowLocations(true)}
-              onBlur={() => setTimeout(() => setShowLocations(false), 200)}
+              onBlur={() =>
+                setTimeout(() => setShowLocations(false), 200)
+              }
               onChange={(e) => setLocationQuery(e.target.value)}
-              onKeyPress={(e) => e.key === 'Enter' && handleSearch()}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") handleSearch();
+              }}
             />
           </div>
 
           <AnimatePresence>
+
             {showLocations && locations.length > 0 && (
+
               <motion.ul
-                initial={{ opacity: 0, y: -5 }}
+                initial={{ opacity: 0, y: -8 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -5 }}
-                className="absolute top-full left-0 w-full bg-white border border-blue-200 rounded-lg mt-1 shadow z-10"
+                exit={{ opacity: 0, y: -8 }}
+                className="
+                absolute
+                top-full
+                left-0
+                w-full
+                mt-2
+                bg-white
+                rounded-xl
+                shadow-xl
+                border
+                border-gray-200
+                overflow-hidden
+                z-20
+                "
               >
-                {locations.map((loc, i) => (
+
+                {locations.map((location, index) => (
+
                   <li
-                    key={i}
-                    className="px-4 py-2 hover:bg-blue-50 cursor-pointer transition-colors"
+                    key={index}
                     onMouseDown={(e) => {
                       e.preventDefault();
-                      setLocationQuery(loc);
+                      setLocationQuery(location);
                       setShowLocations(false);
                     }}
+                    className="
+                    px-4
+                    py-3
+                    cursor-pointer
+                    hover:bg-blue-50
+                    transition
+                    "
                   >
-                    {loc}
+                    {location}
                   </li>
+
                 ))}
+
               </motion.ul>
+
             )}
+
           </AnimatePresence>
+
         </div>
 
-        {/* Search Button */}
-        <button
+        {/* Button */}
+
+        <motion.button
+          whileHover={{ scale: 1.03 }}
+          whileTap={{ scale: 0.96 }}
           onClick={handleSearch}
-          className="w-full md:w-auto h-12 px-6 bg-gradient-to-r from-blue-700 to-blue-600 text-white rounded-lg font-semibold hover:from-blue-800 hover:to-blue-700 shadow transition duration-200"
+          className="
+          h-14
+          px-8
+          rounded-xl
+          bg-gradient-to-r
+          from-blue-600
+          to-blue-700
+          text-white
+          font-semibold
+          shadow-lg
+          hover:shadow-xl
+          transition
+          "
         >
           Find Jobs
-        </button>
+        </motion.button>
+
       </div>
-    </div>
+    </motion.div>
   );
 };
 
