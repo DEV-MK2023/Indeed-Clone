@@ -11,56 +11,50 @@ import { IoLocationSharp } from "react-icons/io5";
 import ApplyModal from "./ApplyModal";
 import { useNavigate } from "react-router-dom";
 
-
 const JobDetails1 = ({ job, onClose, loggedInUser }) => {
-
   const [showModal, setShowModal] = useState(false);
   const [isSaved, setIsSaved] = useState(false);
 
   const navigate = useNavigate();
 
 
-
   useEffect(() => {
-
     if (!job) return;
 
-    const saved =
-      JSON.parse(localStorage.getItem("savedJobs")) || [];
+    const stored = JSON.parse(localStorage.getItem("savedJobs")) || [];
 
-    setIsSaved(
-      saved.some((item)=>item.id === job.id)
-    );
+    const found = stored.some((j) => j.id === job.id);
 
-  },[job]);
+    setIsSaved(found);
 
+  }, [job, loggedInUser]);
 
 
-  if(!job) return null;
+  if (!job) return null;
 
 
 
+  const handleSave = () => {
 
-  const handleSave = ()=>{
+    if (!loggedInUser) {
 
+      alert("⚠️ Please login/register to save jobs!");
 
-    if(!loggedInUser){
-
-      alert("Please login first!");
       navigate("/login");
-      return;
 
+      return;
     }
 
 
-    const saved =
-    JSON.parse(localStorage.getItem("savedJobs")) || [];
+    const stored =
+      JSON.parse(localStorage.getItem("savedJobs")) || [];
 
 
-    if(isSaved){
+    if (isSaved) {
 
-      const updated =
-      saved.filter(item=>item.id!==job.id);
+      const updated = stored.filter(
+        (j) => j.id !== job.id
+      );
 
       localStorage.setItem(
         "savedJobs",
@@ -69,424 +63,628 @@ const JobDetails1 = ({ job, onClose, loggedInUser }) => {
 
       setIsSaved(false);
 
-    }
 
-    else{
+    } else {
+
 
       localStorage.setItem(
         "savedJobs",
-        JSON.stringify([...saved,job])
+        JSON.stringify([...stored, job])
       );
 
       setIsSaved(true);
 
     }
 
-
   };
 
 
 
+  const handleApply = () => {
 
+    if (!loggedInUser) {
 
-  const handleApply = ()=>{
+      alert("⚠️ Please login/register to apply for jobs!");
 
-
-    if(!loggedInUser){
-
-      alert("Please login first!");
       navigate("/login");
+
       return;
 
     }
 
-
     setShowModal(true);
-
 
   };
 
 
 
+  return (
 
+    <div
+      className="
+      w-full
+      sticky
+      top-0
+      self-start
+      h-[100vh]
+      bg-white
+      p-6
+      rounded-2xl
+      shadow-lg
+      border
+      border-blue-200
+      md:flex
+      flex-col
+      overflow-y-auto
+      "
+    >
 
-return (
 
-<div
-className="
-w-full
-bg-white
-rounded-2xl
-shadow-lg
-border
-border-gray-200
-p-5
-h-full
-overflow-y-auto
-"
->
+      {/* Mobile Close */}
 
+      <button
 
-{/* HEADER */}
+        onClick={onClose}
 
-<div className="
-flex
-justify-between
-items-start
-gap-4
-">
+        className="
+        absolute
+        top-3
+        right-3
+        text-gray-400
+        hover:text-red-500
+        text-xl
+        font-bold
+        md:hidden
+        "
 
+      >
+        ×
+      </button>
 
-<div>
 
-<h2 className="
-text-xl
-font-bold
-text-gray-900
-">
-{job.title}
-</h2>
 
 
-<p className="
-text-blue-600
-font-semibold
-mt-1
-">
-{job.company}
-</p>
+      {/* Header */}
 
 
-<p className="
-text-sm
-text-gray-500
-mt-1
-">
-{job.city}, {job.location}
-</p>
+      <div className="flex justify-between items-start gap-4">
 
 
-<p className="
-font-bold
-text-gray-700
-mt-2
-">
-{job.salary}
-</p>
+        <div>
 
 
-</div>
+          <h2
+            className="
+            text-xl
+            font-bold
+            text-gray-900
+            "
+          >
+            {job.title}
+          </h2>
 
 
 
-<button
-onClick={onClose}
-className="
-text-gray-400
-hover:text-red-500
-text-xl
-"
->
-×
-</button>
+          <div
+            className="
+            flex
+            items-center
+            gap-2
+            text-sm
+            text-gray-900
+            mt-2
+            "
+          >
 
+            <a
 
-</div>
+              href="#"
 
+              className="
+              flex
+              items-center
+              gap-1
+              text-blue-700
+              font-semibold
+              hover:underline
+              "
 
+            >
 
+              {job.company}
 
+              <FaExternalLinkAlt className="w-3 h-3"/>
 
-{/* ACTIONS */}
+            </a>
 
-<div className="
-flex
-gap-3
-mt-5
-flex-wrap
-">
 
 
-<button
-onClick={handleApply}
-className="
-bg-blue-600
-text-white
-px-5
-py-2
-rounded-lg
-font-semibold
-text-sm
-hover:bg-blue-700
-"
->
+            <span
+              className="
+              flex
+              items-center
+              gap-1
+              text-gray-700
+              "
+            >
 
-Apply Now
+              · {job.rating || 3.8}
 
-</button>
+              <FaStar className="text-yellow-500 w-4 h-4"/>
 
+            </span>
 
 
-<button
-onClick={handleSave}
-className="
-border
-border-gray-300
-p-2
-rounded-lg
-hover:bg-blue-50
-"
->
+          </div>
 
-{
-isSaved ?
-<FaBookmark className="text-blue-600"/>
-:
-<FaRegBookmark className="text-gray-500"/>
-}
 
-</button>
 
+          <p className="text-gray-600 text-sm mt-1">
 
+            {job.city}, {job.location}
 
+          </p>
 
-<button
-onClick={()=>{
-navigator.clipboard.writeText(window.location.href);
-alert("Job link copied!");
-}}
-className="
-border
-border-gray-300
-p-2
-rounded-lg
-hover:bg-blue-50
-"
->
 
-<FaLink className="text-blue-600"/>
 
-</button>
+          <span
+            className="
+            text-lg
+            block
+            mt-2
+            font-bold
+            text-gray-700
+            "
+          >
 
+            {job.salary}
 
-</div>
+          </span>
 
 
+        </div>
 
 
 
-{showModal &&
-<ApplyModal
-job={job}
-onClose={()=>setShowModal(false)}
-/>
-}
 
+        <button
 
+          onClick={onClose}
 
+          className="
+          hidden
+          md:block
+          text-gray-400
+          hover:text-red-500
+          text-xl
+          font-bold
+          "
 
+        >
 
-<hr className="my-5"/>
+          ×
 
+        </button>
 
 
+      </div>
 
-{/* DETAILS */}
 
 
-<div className="space-y-5">
 
 
 
-<div>
+      {/* Buttons */}
 
-<h3 className="
-font-bold
-text-blue-700
-mb-3
-">
-Job Details
-</h3>
 
+      <div
+        className="
+        flex
+        items-center
+        gap-3
+        pt-4
+        pb-5
+        flex-wrap
+        "
+      >
 
-<div className="flex gap-3 items-center">
 
-<BsCashStack className="text-blue-600"/>
+        <button
 
-<div>
+          onClick={handleApply}
 
-<p className="text-sm text-gray-500">
-Salary
-</p>
+          className={`
 
-<p className="font-semibold">
-{job.salary}
-</p>
+          text-sm
+          font-bold
+          py-2
+          px-4
+          rounded-xl
+          flex
+          items-center
+          gap-2
+          shadow-md
 
-</div>
+          ${
+            loggedInUser
 
+            ?
 
-</div>
+            "bg-gradient-to-r from-blue-600 to-blue-500 text-white hover:from-blue-700 hover:to-blue-600"
 
+            :
 
+            "bg-gray-300 text-gray-600 cursor-not-allowed"
 
+          }
 
-<div className="
-flex
-gap-3
-items-center
-mt-4
-">
+          `}
 
-<BsCashStack className="text-blue-600"/>
+        >
 
-<div>
+          Apply Now
 
-<p className="text-sm text-gray-500">
-Type
-</p>
+          <FaExternalLinkAlt className="w-3 h-3"/>
 
-<p className="font-semibold">
-{job.type}
-</p>
 
-</div>
+        </button>
 
 
-</div>
 
 
-</div>
 
+        <button
 
+          onClick={handleSave}
 
+          className="
+          p-2
+          rounded-lg
+          border
+          border-blue-300
+          hover:bg-blue-50
+          "
 
+        >
 
-<hr/>
+          {
 
+          isSaved
 
+          ?
 
+          <FaBookmark className="w-5 h-5 text-blue-600"/>
 
+          :
 
-<div>
+          <FaRegBookmark className="w-5 h-5 text-gray-600"/>
 
+          }
 
-<h3 className="
-font-bold
-text-blue-700
-mb-3
-">
-Location
-</h3>
 
+        </button>
 
-<div className="flex gap-3 items-center">
 
-<IoLocationSharp
-className="text-blue-600"
-/>
 
 
-<p className="font-semibold text-gray-700">
 
-{job.city}
 
-</p>
+        <button
 
+          className="
+          p-2
+          rounded-lg
+          border
+          border-blue-300
+          hover:bg-blue-50
+          "
 
-</div>
+          onClick={()=>{
 
+            navigator.clipboard.writeText(window.location.href);
 
-</div>
+            alert("Job link copied!");
 
+          }}
 
+        >
 
+          <FaLink className="w-5 h-5 text-blue-600"/>
 
 
+        </button>
 
-<hr/>
 
 
+      </div>
 
 
 
-<div>
 
 
-<h3 className="
-font-bold
-text-blue-700
-mb-3
-">
-Job Description
-</h3>
 
+      {
+        showModal &&
 
+        <ApplyModal
 
-<p className="
-text-sm
-text-gray-700
-leading-relaxed
-">
+          job={job}
 
-{
-job.description ||
-"No description available."
-}
+          onClose={()=>setShowModal(false)}
 
-</p>
+        />
 
+      }
 
 
 
-<h4 className="
-font-bold
-mt-5
-mb-2
-text-gray-800
-">
 
-Requirements
 
-</h4>
+      <hr className="border-blue-200 my-3"/>
 
 
-<ul className="
-list-disc
-pl-5
-text-sm
-text-gray-700
-space-y-1
-">
 
 
-{
-job.requirements?.map(
-(req,index)=>(
 
-<li key={index}>
-{req}
-</li>
 
-)
-)
-}
+      {/* Scroll Area - SAME LOGIC */}
 
 
-</ul>
+      <div
+        className="
+        flex
+        flex-col
+        gap-5
+        overflow-y-auto
+        thin-scroll
+        pr-2
+        flex-grow
+        "
+      >
 
 
-</div>
 
+        {/* Job Details */}
 
 
-</div>
+        <div className="pt-4">
 
 
-</div>
+          <h1
+            className="
+            font-bold
+            text-lg
+            text-blue-800
+            "
+          >
 
-);
+            Job Details
 
+          </h1>
+
+
+
+          <div className="flex gap-4 pt-4">
+
+
+            <BsCashStack className="text-blue-600 h-6"/>
+
+
+            <div className="flex flex-col gap-1">
+
+              <span className="font-bold text-gray-700">
+
+                Pay
+
+              </span>
+
+
+              <span
+                className="
+                bg-blue-50
+                px-2
+                py-1
+                rounded-md
+                text-sm
+                font-bold
+                "
+              >
+
+                {job.salary}
+
+              </span>
+
+
+            </div>
+
+
+          </div>
+
+
+
+
+
+          <div className="flex gap-4 pt-4">
+
+
+            <BsCashStack className="text-blue-600 h-6"/>
+
+
+            <div className="flex flex-col gap-1">
+
+
+              <span className="font-bold text-gray-700">
+
+                Job Type
+
+              </span>
+
+
+              <span
+                className="
+                bg-blue-50
+                px-2
+                py-1
+                rounded-md
+                text-sm
+                font-bold
+                "
+              >
+
+                {job.type}
+
+              </span>
+
+
+            </div>
+
+
+          </div>
+
+
+
+        </div>
+
+
+
+
+
+        <hr className="border-blue-200"/>
+
+
+
+
+
+        {/* Location */}
+
+
+        <div>
+
+
+          <h1 className="font-bold text-lg text-blue-800">
+
+            Location
+
+          </h1>
+
+
+
+          <div className="flex gap-4 pt-4">
+
+
+            <IoLocationSharp className="text-blue-600 h-6"/>
+
+
+            <span className="font-bold text-gray-700">
+
+              {job.city}
+
+            </span>
+
+
+          </div>
+
+
+
+        </div>
+
+
+
+
+
+
+        <hr className="border-blue-200"/>
+
+
+
+
+
+        {/* Description */}
+
+
+        <div>
+
+
+          <h1 className="font-bold text-lg text-blue-800">
+
+            Full Job Description
+
+          </h1>
+
+
+
+          <div className="flex flex-col gap-3 pt-4">
+
+
+            <h2 className="font-bold text-gray-700">
+
+              Job Summary:
+
+            </h2>
+
+
+
+            <p className="text-sm text-gray-700">
+
+              {job.description || "No job description available."}
+
+            </p>
+
+
+
+
+            <h2 className="font-bold text-gray-700">
+
+              Key Responsibilities:
+
+            </h2>
+
+
+
+            <ul className="list-disc pl-5 text-sm text-gray-700">
+
+
+              {
+
+              job.requirements?.map((req,i)=>(
+
+                <li key={i}>
+
+                  {req}
+
+                </li>
+
+              ))
+
+              ||
+
+              <li>
+                No specific requirements listed.
+              </li>
+
+              }
+
+
+            </ul>
+
+
+
+          </div>
+
+
+        </div>
+
+
+
+
+      </div>
+
+
+
+
+    </div>
+
+  );
 
 };
 
