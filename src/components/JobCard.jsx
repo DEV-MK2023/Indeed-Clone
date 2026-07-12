@@ -1,7 +1,6 @@
 // src/components/JobCard.jsx
 
 import { motion } from "framer-motion";
-import { useState } from "react";
 import {
   FaRegBookmark,
   FaLink,
@@ -9,7 +8,6 @@ import {
   FaBriefcase,
   FaMoneyBillWave,
 } from "react-icons/fa";
-
 
 
 export default function JobCard({
@@ -21,9 +19,6 @@ export default function JobCard({
 }) {
 
 
-
-
-
   const handleApply = () => {
 
     if (!loggedInUser) {
@@ -32,181 +27,123 @@ export default function JobCard({
       return;
     }
 
-    if (onApply) {
-      onApply(job);
-    }
-
   };
-
-
 
 
   const handleSave = () => {
 
     if (!loggedInUser) {
-
-      alert("Please login/register to save jobs!");
-
+      alert("⚠️ Please login/register to save jobs!");
       window.location.href = "/login";
-
       return;
-
     }
 
-
-    if (onSaveJob) {
-
-      onSaveJob(job);
-
-    }
+    onSaveJob && onSaveJob(job);
 
   };
-
-
-
 
 
   const handleShare = () => {
 
-
-    if (onShareJob) {
-
+    if(onShareJob){
       onShareJob(job);
-
     }
-
-    else {
-
-
-      const jobUrl =
-        `${window.location.origin}/job-details-page/${job.id}`;
-
-
-      navigator.clipboard.writeText(jobUrl);
-
+    else{
+      navigator.clipboard.writeText(
+        `${window.location.origin}/job-details-page/${job.id}`
+      );
 
       alert("Job link copied!");
-
     }
-
 
   };
 
 
-
-
-
   return (
-
 
     <motion.div
 
-
       initial={{
-        opacity: 0,
-        y: 20
+        opacity:0,
+        y:15
       }}
-
 
       animate={{
-        opacity: 1,
-        y: 0
+        opacity:1,
+        y:0
       }}
-
-
-      transition={{
-        duration: 0.4
-      }}
-
 
       whileHover={{
-        y: -5
+        y:-3
+      }}
+
+      transition={{
+        duration:0.3
       }}
 
 
       className="
       bg-white
-      rounded-2xl
+      rounded-xl
       border
       border-gray-200
-      p-6
-      mb-5
+      p-4
+      mb-4
       shadow-sm
-      hover:shadow-xl
-      transition-all
-      duration-300
+      hover:shadow-md
+      transition
       "
-
 
     >
 
 
+      {/* Header */}
 
-
-      {/* Top Section */}
-
-
-      <div className="
-      flex
-      justify-between
-      items-start
-      gap-4
-      ">
+      <div className="flex justify-between">
 
 
         <div>
 
 
           {
-            job?.isNew && (
+            job?.isNew &&
 
-              <span
-                className="
-                inline-block
-                mb-3
-                px-3
-                py-1
-                text-xs
-                font-semibold
-                rounded-full
-                bg-blue-100
-                text-blue-700
-                "
-              >
+            <span
+              className="
+              text-xs
+              bg-blue-100
+              text-blue-700
+              px-2
+              py-1
+              rounded-full
+              "
+            >
+              New
+            </span>
 
-                New Job
-
-              </span>
-
-            )
           }
-
 
 
           <h2
             className="
-            text-xl
+            text-lg
             font-bold
             text-gray-900
+            mt-2
             "
           >
-
             {job?.title}
-
           </h2>
-
 
 
           <p
             className="
             text-blue-600
+            text-sm
             font-semibold
-            mt-1
             "
           >
-
             {job?.company}
-
           </p>
 
 
@@ -214,95 +151,78 @@ export default function JobCard({
 
 
 
-        <motion.button
-
-          whileHover={{
-            scale: 1.1
-          }}
+        <button
 
           onClick={handleSave}
 
           className="
-          p-3
-          rounded-xl
+          p-2
+          rounded-lg
           border
-          border-gray-200
           hover:bg-blue-50
-          transition
           "
 
         >
 
           <FaRegBookmark
-            className="
-            text-blue-600
-            "
+            className="text-blue-600"
           />
 
-        </motion.button>
-
+        </button>
 
 
       </div>
 
 
 
-
-
-
-      {/* Job Info */}
+      {/* Quick Info */}
 
 
       <div
         className="
         flex
         flex-wrap
-        gap-3
-        mt-5
+        gap-2
+        mt-3
         "
       >
-
 
 
         <span
           className="
           flex
           items-center
-          gap-2
-          px-3
-          py-2
-          rounded-lg
+          gap-1
           bg-gray-100
-          text-gray-700
-          text-sm
+          rounded-md
+          px-2
+          py-1
+          text-xs
           "
         >
 
-          <FaMapMarkerAlt className="text-blue-600" />
+          <FaMapMarkerAlt className="text-blue-600"/>
 
-          {job?.city}, {job?.location}
+          {job?.city}
 
         </span>
 
 
 
-
-
         <span
           className="
           flex
           items-center
-          gap-2
-          px-3
-          py-2
-          rounded-lg
+          gap-1
           bg-gray-100
-          text-gray-700
-          text-sm
+          rounded-md
+          px-2
+          py-1
+          text-xs
           "
         >
 
-          <FaMoneyBillWave className="text-green-600" />
+          <FaMoneyBillWave className="text-green-600"/>
 
           {job?.salary}
 
@@ -310,33 +230,24 @@ export default function JobCard({
 
 
 
-
-
         <span
           className="
           flex
           items-center
-          gap-2
-          px-3
-          py-2
-          rounded-lg
+          gap-1
           bg-gray-100
-          text-gray-700
-          text-sm
+          rounded-md
+          px-2
+          py-1
+          text-xs
           "
         >
 
-          <FaBriefcase className="text-purple-600" />
+          <FaBriefcase className="text-purple-600"/>
 
-          {
-            job?.type === "full-time"
-              ? "Full Time"
-              : "Part Time"
-          }
-
+          {job?.type}
 
         </span>
-
 
 
       </div>
@@ -344,19 +255,14 @@ export default function JobCard({
 
 
 
-
-
-
       {/* Description */}
-
 
       <p
         className="
         text-gray-600
         text-sm
-        leading-relaxed
-        mt-5
-        line-clamp-3
+        mt-3
+        line-clamp-2
         "
       >
 
@@ -367,47 +273,39 @@ export default function JobCard({
 
 
 
-
-
-
       {/* Skills */}
-
 
       <div
         className="
         flex
         flex-wrap
         gap-2
-        mt-5
+        mt-3
         "
       >
 
         {
-          job?.requirements?.slice(0, 4).map(
-            (req, index) => (
+          job?.requirements?.slice(0,3)
+          .map((req,index)=>(
 
-              <span
+            <span
+              key={index}
 
-                key={index}
+              className="
+              text-xs
+              bg-blue-50
+              text-blue-700
+              px-2
+              py-1
+              rounded-full
+              "
+            >
 
-                className="
-                px-3
-                py-1
-                rounded-full
-                text-xs
-                font-medium
-                bg-blue-50
-                text-blue-700
-                "
-              >
+              {req}
 
-                {req}
+            </span>
 
-              </span>
-
-
-            )
-          )
+          ))
         }
 
 
@@ -416,136 +314,89 @@ export default function JobCard({
 
 
 
-
-
-
-
-      {/* Actions */}
+      {/* Buttons */}
 
 
       <div
         className="
         flex
-        flex-wrap
-        gap-3
-        mt-6
+        gap-2
+        mt-4
         "
       >
 
 
-
-        <motion.button
-
-          whileHover={{
-            scale: 1.03
-          }}
-
-          whileTap={{
-            scale: 0.97
-          }}
+        <button
 
           onClick={handleApply}
 
           className="
-          px-5
-          py-2.5
-          rounded-xl
           bg-blue-600
           text-white
-          font-semibold
           text-sm
+          font-semibold
+          px-4
+          py-2
+          rounded-lg
           hover:bg-blue-700
-          transition
           "
 
         >
 
-          Apply Now
+          Apply
 
-        </motion.button>
-
-
+        </button>
 
 
 
-        <motion.button
+        <button
 
-
-          whileHover={{
-            scale: 1.03
-          }}
-
-
-          onClick={() => onDetailsClick(job)}
-
+          onClick={()=>onDetailsClick(job)}
 
           className="
-          px-5
-          py-2.5
-          rounded-xl
           border
           border-blue-200
           text-blue-700
-          font-semibold
           text-sm
+          font-semibold
+          px-4
+          py-2
+          rounded-lg
           hover:bg-blue-50
-          transition
           "
 
         >
 
           Details
 
-        </motion.button>
+        </button>
 
 
 
-
-
-
-
-        <motion.button
-
-          whileHover={{
-            scale: 1.1
-          }}
+        <button
 
           onClick={handleShare}
 
           className="
           ml-auto
-          p-3
-          rounded-xl
+          p-2
           border
-          border-gray-200
+          rounded-lg
           hover:bg-gray-100
           "
 
         >
 
-          <FaLink className="text-gray-600" />
+          <FaLink className="text-gray-600"/>
 
-
-        </motion.button>
-
-
+        </button>
 
 
       </div>
 
 
-
-
-
-
-      
-
-
-
     </motion.div>
 
-
   );
-
 
 }
